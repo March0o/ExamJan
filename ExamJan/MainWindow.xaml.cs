@@ -36,10 +36,10 @@ namespace ExamJan
             BudgetItem budgetItem2 = new BudgetItem("Bonus", 300m, BudgetItem.BudgetItemType.Income, DateTime.Parse("15/08/3003"), false);
             BudgetItem budgetItem3 = new BudgetItem("100", 300m, BudgetItem.BudgetItemType.Income, DateTime.Parse("25/08/3003"), true);
             //  Expenses
-            BudgetItem budgetItem4 = new BudgetItem("Grant", 400m, BudgetItem.BudgetItemType.Income, DateTime.Parse("1/08/3003"), true);
-            BudgetItem budgetItem5 = new BudgetItem("Flight", 100m, BudgetItem.BudgetItemType.Income, DateTime.Parse("5/08/3003"), false);
-            BudgetItem budgetItem6 = new BudgetItem("Netflix", 10m, BudgetItem.BudgetItemType.Income, DateTime.Parse("15/08/3003"), true);
-            BudgetItem budgetItem7 = new BudgetItem("Spotify", 8m, BudgetItem.BudgetItemType.Income, DateTime.Parse("20/08/3003"), true);
+            BudgetItem budgetItem4 = new BudgetItem("Grant", 400m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("1/08/3003"), true);
+            BudgetItem budgetItem5 = new BudgetItem("Flight", 100m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("5/08/3003"), false);
+            BudgetItem budgetItem6 = new BudgetItem("Netflix", 10m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("15/08/3003"), true);
+            BudgetItem budgetItem7 = new BudgetItem("Spotify", 8m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("20/08/3003"), true);
 
             // Add to Lists
             incomeList.Add(budgetItem1);
@@ -93,6 +93,42 @@ namespace ExamJan
             UpdateListBoxes();
         }
 
+        public void RemoveItem()
+        {
+            //  Declare Item
+            BudgetItem chosen = null;
+
+            // Determine what is selected
+            if (lbxIncome.SelectedItem != null) 
+            {
+                chosen = lbxIncome.SelectedItem as BudgetItem;
+            }
+            else if (lbxExpenses.SelectedItem != null) 
+            {
+                chosen = lbxExpenses.SelectedItem as BudgetItem;
+            }
+
+            if (chosen == null)
+            {
+                MessageBox.Show("Please choose an item");
+            }
+            else
+            {
+                // Remove from list
+                if (chosen.ItemType == BudgetItem.BudgetItemType.Income)
+                {
+                    incomeList.Remove(chosen);
+                }
+                else if (chosen.ItemType == BudgetItem.BudgetItemType.Expense)
+                {
+                    expenseList.Remove(chosen);
+                }
+
+                //  Update Display
+                UpdateListBoxes();
+            }
+        }
+
         public void UpdateListBoxes()
         {
             lbxExpenses.ItemsSource = null;
@@ -105,6 +141,21 @@ namespace ExamJan
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddItem();
+        }
+
+        private void lbxIncome_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lbxExpenses.SelectedItem = null; 
+        }
+
+        private void lbxExpenses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lbxIncome.SelectedItem = null;
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            RemoveItem();
         }
     }
 }

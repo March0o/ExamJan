@@ -13,8 +13,8 @@
             <ColumnDefinition Width="192*"/>
             <ColumnDefinition Width="573*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="lbxIncome" HorizontalAlignment="Left" Height="207" Margin="21,97,0,0" VerticalAlignment="Top" Width="170" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2"/>
-        <ListBox x:Name="lbxExpenses" HorizontalAlignment="Left" Height="207" Margin="55,97,0,0" VerticalAlignment="Top" Width="189" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3"/>
+        <ListBox x:Name="lbxIncome" HorizontalAlignment="Left" Height="207" Margin="21,97,0,0" VerticalAlignment="Top" Width="170" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2" SelectionChanged="lbxIncome_SelectionChanged"/>
+        <ListBox x:Name="lbxExpenses" HorizontalAlignment="Left" Height="207" Margin="55,97,0,0" VerticalAlignment="Top" Width="189" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3" SelectionChanged="lbxExpenses_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="21,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="2"><Run Language="en-gb" Text="Income"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="55,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Grid.Column="3"><Run Language="en-gb" Text="Expenses"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="21,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Grid.Column="2"><Run Language="en-gb" Text="Total Income"/></TextBlock>
@@ -34,7 +34,7 @@
         <RadioButton x:Name="rbtnIncome" Content="Income" HorizontalAlignment="Left" Height="17" Margin="350,200,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
         <RadioButton x:Name="rbtnExpense" Content="Expense" HorizontalAlignment="Left" Height="17" Margin="445,200,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
         <CheckBox x:Name="cbxRecurring" Content="Recurring" HorizontalAlignment="Left" Height="16" Margin="350,247,0,0" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
-        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="350,304,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
+        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="350,304,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3" Click="btnRemove_Click"/>
         <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="21" Margin="445,304,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3" Click="btnAdd_Click"/>
 
     </Grid>
