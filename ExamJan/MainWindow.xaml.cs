@@ -136,6 +136,33 @@ namespace ExamJan
 
             lbxExpenses.ItemsSource = expenseList;
             lbxIncome.ItemsSource = incomeList;
+
+            UpdateTotals();
+        }
+
+        public void UpdateTotals()
+        {
+            //  Total Income
+            decimal totalIncome = 0;
+            foreach (BudgetItem item in incomeList) 
+            {
+                totalIncome += item.Amount;
+            }
+
+            //  Total Expenses
+            decimal totalExpenses = 0;
+            foreach (BudgetItem item in expenseList)
+            {
+                totalExpenses += item.Amount;
+            }
+
+            // Total Balance
+            decimal totalBalance = totalIncome - totalExpenses;
+
+            // Update Boxes
+            tblkIncome.Text = $"{totalIncome:c}";
+            tblkTotalOutgoings.Text = $"{totalExpenses:c}";
+            tblkCurrentBalance.Text = $"{totalBalance:c}";
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -157,5 +184,6 @@ namespace ExamJan
         {
             RemoveItem();
         }
+
     }
 }
