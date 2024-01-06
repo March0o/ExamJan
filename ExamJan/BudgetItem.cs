@@ -28,7 +28,7 @@ namespace ExamJan
         //  Methods
         public override string ToString()
         {
-            return $"{Date.ToString("M")} {Name} {Amount} - {Recurring}";
+            return $"{Date.ToString("dd") + " of month"} {Name} {Amount:c} - {Recurring}";
         }
 
         public int CompareTo(object obj)

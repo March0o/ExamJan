@@ -20,7 +20,9 @@ namespace ExamJan
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<BudgetItem> budgetList = new List<BudgetItem>();
+        List<BudgetItem> incomeList = new List<BudgetItem>();
+        List<BudgetItem> expenseList = new List<BudgetItem>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -39,7 +41,22 @@ namespace ExamJan
             BudgetItem budgetItem6 = new BudgetItem("Netflix", 10m, DateTime.Parse("15/08/3003"), true);
             BudgetItem budgetItem7 = new BudgetItem("Spotify", 8m, DateTime.Parse("20/08/3003"), true);
 
-            // Add to List
+            // Add to Lists
+            incomeList.Add(budgetItem1);
+            incomeList.Add(budgetItem2);
+            incomeList.Add(budgetItem3);
+
+            expenseList.Add(budgetItem4);
+            expenseList.Add(budgetItem5);
+            expenseList.Add(budgetItem6);
+            expenseList.Add(budgetItem7);
+
+            // Display List in Listboxes
+            lbxExpenses.ItemsSource = null;
+            lbxIncome.ItemsSource = null;
+
+            lbxExpenses.ItemsSource = expenseList;
+            lbxIncome.ItemsSource = incomeList;
         }
     }
 }
