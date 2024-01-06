@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExamJan
 {
-    internal class BudgetItem
+    internal class BudgetItem : IComparable
     {
         // Properties
         public string Name { get; set; }
@@ -29,6 +29,12 @@ namespace ExamJan
         public override string ToString()
         {
             return $"{Date.ToString("dddd")} {Name} {Amount} - {Recurring}";
+        }
+
+        public int CompareTo(object obj)
+        {
+           BudgetItem that = obj as BudgetItem;
+           return this.Date.CompareTo(that.Date);
         }
     } // End of Class
 }
