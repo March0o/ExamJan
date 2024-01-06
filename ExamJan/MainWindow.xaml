@@ -5,31 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExamJan"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <ListBox x:Name="lbxIncome" HorizontalAlignment="Left" Height="207" Margin="56,97,0,0" VerticalAlignment="Top" Width="170" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <ListBox x:Name="lbxExpenses" HorizontalAlignment="Left" Height="207" Margin="282,97,0,0" VerticalAlignment="Top" Width="189" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <TextBlock HorizontalAlignment="Left" Height="19" Margin="56,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"><Run Language="en-gb" Text="Income"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="19" Margin="282,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"><Run Language="en-gb" Text="Expenses"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="56,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"><Run Language="en-gb" Text="Total Income"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="18" Margin="56,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"><Run Language="en-gb" Text="Current Balance"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="20" Margin="56,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58"><Run Language="en-gb" Text="Search"/></TextBlock>
-        <TextBlock x:Name="tblkIncome" HorizontalAlignment="Left" Height="20" Margin="162,328,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="64"/>
-        <TextBlock x:Name="tblkCurrentBalance" HorizontalAlignment="Left" Height="20" Margin="162,354,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="64"/>
-        <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Height="20" Margin="155,387,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="71"/>
-        <TextBlock HorizontalAlignment="Left" Height="22" Margin="282,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"><Run Text="Total "/><Run Language="en-gb" Text="Outgoings"/></TextBlock>
-        <TextBlock x:Name="tblkTotalOutgoings" HorizontalAlignment="Left" Height="22" Margin="388,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"><Run Language="en-gb" Text="textBlock"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="577,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"><Run Language="en-gb" Text="Name"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="577,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72"><Run Language="en-gb" Text="Date"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Height="23" Margin="577,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.398,0.433"><Run Language="en-gb" Text="Amount"/></TextBlock>
-        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="654,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104"/>
-        <TextBox x:Name="tbxAmount" HorizontalAlignment="Left" Height="23" Margin="654,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104"/>
-        <DatePicker x:Name="datepicker" HorizontalAlignment="Left" Height="23" Margin="654,125,0,0" VerticalAlignment="Top" Width="104"/>
-        <RadioButton x:Name="rbtnIncome" Content="Income" HorizontalAlignment="Left" Height="17" Margin="577,200,0,0" VerticalAlignment="Top" Width="86"/>
-        <RadioButton x:Name="rbtnExpense" Content="Expense" HorizontalAlignment="Left" Height="17" Margin="672,200,0,0" VerticalAlignment="Top" Width="86"/>
-        <CheckBox x:Name="cbxRecurring" Content="Recurring" HorizontalAlignment="Left" Height="16" Margin="577,247,0,0" VerticalAlignment="Top" Width="72"/>
-        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="577,304,0,0" VerticalAlignment="Top" Width="86"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="21" Margin="672,304,0,0" VerticalAlignment="Top" Width="86"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="17*"/>
+            <ColumnDefinition Width="192*"/>
+            <ColumnDefinition Width="573*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="lbxIncome" HorizontalAlignment="Left" Height="207" Margin="21,97,0,0" VerticalAlignment="Top" Width="170" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2"/>
+        <ListBox x:Name="lbxExpenses" HorizontalAlignment="Left" Height="207" Margin="55,97,0,0" VerticalAlignment="Top" Width="189" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="21,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="2"><Run Language="en-gb" Text="Income"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="55,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Grid.Column="3"><Run Language="en-gb" Text="Expenses"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="21,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Grid.Column="2"><Run Language="en-gb" Text="Total Income"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="18" Margin="21,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Grid.Column="2"><Run Language="en-gb" Text="Current Balance"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="21,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Grid.Column="2"><Run Language="en-gb" Text="Search"/></TextBlock>
+        <TextBlock x:Name="tblkIncome" HorizontalAlignment="Left" Height="20" Margin="127,328,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="64" Grid.Column="2"/>
+        <TextBlock x:Name="tblkCurrentBalance" HorizontalAlignment="Left" Height="20" Margin="127,354,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="64" Grid.Column="2"/>
+        <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Height="20" Margin="120,387,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="71" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Height="22" Margin="55,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Grid.Column="3"><Run Text="Total "/><Run Language="en-gb" Text="Outgoings"/></TextBlock>
+        <TextBlock x:Name="tblkTotalOutgoings" HorizontalAlignment="Left" Height="22" Margin="161,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3"><Run Language="en-gb" Text="textBlock"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="350,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Grid.Column="3"><Run Language="en-gb" Text="Name"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="350,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Grid.Column="3"><Run Language="en-gb" Text="Date"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="23" Margin="350,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.398,0.433" Grid.Column="3"><Run Language="en-gb" Text="Amount"/></TextBlock>
+        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="427,97,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+        <TextBox x:Name="tbxAmount" HorizontalAlignment="Left" Height="23" Margin="427,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+        <DatePicker x:Name="datepicker" HorizontalAlignment="Left" Height="23" Margin="427,125,0,0" VerticalAlignment="Top" Width="104" Grid.Column="3"/>
+        <RadioButton x:Name="rbtnIncome" Content="Income" HorizontalAlignment="Left" Height="17" Margin="350,200,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
+        <RadioButton x:Name="rbtnExpense" Content="Expense" HorizontalAlignment="Left" Height="17" Margin="445,200,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
+        <CheckBox x:Name="cbxRecurring" Content="Recurring" HorizontalAlignment="Left" Height="16" Margin="350,247,0,0" VerticalAlignment="Top" Width="72" Grid.Column="3"/>
+        <Button x:Name="btnRemove" Content="Remove" HorizontalAlignment="Left" Height="21" Margin="350,304,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Height="21" Margin="445,304,0,0" VerticalAlignment="Top" Width="86" Grid.Column="3"/>
 
     </Grid>
 </Window>

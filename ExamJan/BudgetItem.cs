@@ -17,7 +17,7 @@ namespace ExamJan
 
         //  Constructors
         public BudgetItem() { }
-        public BudgetItem(string name, decimal amount, Enum itemType, DateTime date, bool recurring)
+        public BudgetItem(string name, decimal amount, DateTime date, bool recurring)
         {
             Name = name;
             Amount = amount;
@@ -28,7 +28,7 @@ namespace ExamJan
         //  Methods
         public override string ToString()
         {
-            return $"{Date.ToString("dddd")} {Name} {Amount} - {Recurring}";
+            return $"{Date.ToString("M")} {Name} {Amount} - {Recurring}";
         }
 
         public int CompareTo(object obj)
