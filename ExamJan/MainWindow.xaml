@@ -22,7 +22,7 @@
         <TextBlock HorizontalAlignment="Left" Height="20" Margin="21,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Grid.Column="2"><Run Language="en-gb" Text="Search"/></TextBlock>
         <TextBlock x:Name="tblkIncome" HorizontalAlignment="Left" Height="20" Margin="127,328,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="64" Grid.Column="2"/>
         <TextBlock x:Name="tblkCurrentBalance" HorizontalAlignment="Left" Height="20" Margin="127,354,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="64" Grid.Column="2"/>
-        <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Height="20" Margin="120,387,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="71" Grid.Column="2"/>
+        <TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Height="20" Margin="120,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="2" TextChanged="tbxSearch_TextChanged"/>
         <TextBlock HorizontalAlignment="Left" Height="22" Margin="55,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Grid.Column="3"><Run Text="Total "/><Run Language="en-gb" Text="Outgoings"/></TextBlock>
         <TextBlock x:Name="tblkTotalOutgoings" HorizontalAlignment="Left" Height="22" Margin="161,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3"><Run Language="en-gb" Text="textBlock"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="23" Margin="350,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Grid.Column="3"><Run Language="en-gb" Text="Name"/></TextBlock>

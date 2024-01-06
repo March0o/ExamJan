@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 
 namespace ExamJan
 {
+    // https://github.com/March0o/ExamJan.git
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+        //  Create Lists
         List<BudgetItem> incomeList = new List<BudgetItem>();
         List<BudgetItem> expenseList = new List<BudgetItem>();
+
+        List<BudgetItem> filteredIncomeList = new List<BudgetItem>();
+        List<BudgetItem> filteredExpenseList = new List<BudgetItem>();
 
         public MainWindow()
         {
@@ -31,11 +36,11 @@ namespace ExamJan
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             // Create 7 items
-            // Income
+                // Income
             BudgetItem budgetItem1 = new BudgetItem("Grant",300m, BudgetItem.BudgetItemType.Income ,DateTime.Parse("5/08/3003"),true);
             BudgetItem budgetItem2 = new BudgetItem("Bonus", 300m, BudgetItem.BudgetItemType.Income, DateTime.Parse("15/08/3003"), false);
             BudgetItem budgetItem3 = new BudgetItem("100", 300m, BudgetItem.BudgetItemType.Income, DateTime.Parse("25/08/3003"), true);
-            //  Expenses
+                //  Expenses
             BudgetItem budgetItem4 = new BudgetItem("Grant", 400m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("1/08/3003"), true);
             BudgetItem budgetItem5 = new BudgetItem("Flight", 100m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("5/08/3003"), false);
             BudgetItem budgetItem6 = new BudgetItem("Netflix", 10m, BudgetItem.BudgetItemType.Expense, DateTime.Parse("15/08/3003"), true);
@@ -50,6 +55,10 @@ namespace ExamJan
             expenseList.Add(budgetItem5);
             expenseList.Add(budgetItem6);
             expenseList.Add(budgetItem7);
+
+            // Populate filtered lists
+            filteredIncomeList = incomeList;
+            filteredExpenseList = expenseList;
 
             // Display List in Listboxes
             UpdateListBoxes();
@@ -134,8 +143,8 @@ namespace ExamJan
             lbxExpenses.ItemsSource = null;
             lbxIncome.ItemsSource = null;
 
-            lbxExpenses.ItemsSource = expenseList;
-            lbxIncome.ItemsSource = incomeList;
+            lbxExpenses.ItemsSource = filteredExpenseList;
+            lbxIncome.ItemsSource = filteredIncomeList;
 
             UpdateTotals();
         }
@@ -165,6 +174,35 @@ namespace ExamJan
             tblkCurrentBalance.Text = $"{totalBalance:c}";
         }
 
+        public void Search()
+        {
+            // Assign List Values
+            filteredIncomeList.Clear();
+            filteredExpenseList.Clear();
+
+            // Get input value
+            string input = tbxSearch.Text;
+
+            // Loop to find matching items
+            foreach (BudgetItem item in incomeList) // Loop through income
+            {
+                if (item.Name.Contains(input))
+                {
+                    filteredIncomeList.Add(item);
+                }
+            }
+            foreach (BudgetItem item in expenseList)
+            {
+                if ( item.Name.Contains(input)) 
+                {
+                    filteredExpenseList.Add(item);
+                }
+            }
+
+            // Update Display
+            UpdateListBoxes();
+        }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddItem();
@@ -185,5 +223,9 @@ namespace ExamJan
             RemoveItem();
         }
 
+        private void tbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
     }
 }
