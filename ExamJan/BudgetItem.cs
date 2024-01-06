@@ -15,7 +15,7 @@ namespace ExamJan
         public decimal Amount { get; set; }
         public BudgetItemType ItemType {  get; set; } 
         public DateTime Date { get; set; }
-        public bool Recurring { get; set; }
+        public bool Recurring {  get; set; }
 
         //  Constructors
         public BudgetItem() { }

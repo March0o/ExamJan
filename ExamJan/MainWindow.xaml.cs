@@ -52,6 +52,49 @@ namespace ExamJan
             expenseList.Add(budgetItem7);
 
             // Display List in Listboxes
+            UpdateListBoxes();
+        }
+
+        public void AddItem()
+        {
+            // Get values
+            string name = tbxName.Text;
+            decimal amount = decimal.Parse(tbxAmount.Text);
+            BudgetItem.BudgetItemType itemType = BudgetItem.BudgetItemType.Income;
+            if (rbtnIncome.IsChecked == true)
+            {
+                itemType = BudgetItem.BudgetItemType.Income;
+            }
+            else if (rbtnExpense.IsChecked == true) 
+            {
+                itemType = BudgetItem.BudgetItemType.Expense;
+            }
+            DateTime date = datepicker.SelectedDate.Value.ToUniversalTime();
+            bool recurring = false;
+            if (cbxRecurring.IsChecked == true) 
+            {
+                recurring = true;
+            }
+
+            // Create Item
+            BudgetItem newItem = new BudgetItem(name,amount,itemType,date,recurring);
+
+            // Add to list
+            if (newItem.ItemType == BudgetItem.BudgetItemType.Income) 
+            {
+                incomeList.Add(newItem);
+            }
+            else if (newItem.ItemType == BudgetItem.BudgetItemType.Expense)
+            {
+                expenseList.Add(newItem);
+            }
+
+            // Update Boxes
+            UpdateListBoxes();
+        }
+
+        public void UpdateListBoxes()
+        {
             lbxExpenses.ItemsSource = null;
             lbxIncome.ItemsSource = null;
 
@@ -59,9 +102,9 @@ namespace ExamJan
             lbxIncome.ItemsSource = incomeList;
         }
 
-        public void AddItem()
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddItem();
         }
     }
 }
