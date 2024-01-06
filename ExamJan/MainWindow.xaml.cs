@@ -225,7 +225,17 @@ namespace ExamJan
 
         private void tbxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            Search();
+        }
+
+        private void tbxName_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxName.Text = null;
+        }
+
+        private void tbxAmount_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxAmount.Text = null;
         }
     }
 }
